@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Weekly class schedule for Section 2BSIT-2.">
+    <meta name="theme-color" content="#07131f">
+    <title>2BSIT-2 Class Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#schedule">Skip to schedule</a>
+
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="terminal-bar" aria-hidden="true">
+                <span class="terminal-dots"><i></i><i></i><i></i></span>
+                <span class="terminal-path">~/2bsit-2/schedule</span>
+                <span>● online</span>
+            </div>
+
+            <div class="hero">
+                <div class="brand-mark" aria-hidden="true"><span>2</span></div>
+                <div class="hero-copy">
+                    <p class="eyebrow">Bachelor of Science in Information Technology</p>
+                    <h1>2BSIT-2 <span>Class Schedule</span></h1>
+                    <p class="hero-description">Five class days, twelve subjects, one clear view of the week.</p>
+                </div>
+            </div>
+        </header>
+
+        <main id="schedule">
+            <section class="realtime-panel" aria-labelledby="realtime-heading">
+                <header class="realtime-header">
+                    <div>
+                        <p class="eyebrow">Live schedule</p>
+                        <h2 id="realtime-heading">Right now</h2>
+                    </div>
+                    <time id="live-date-time">Checking date and time…</time>
+                </header>
+
+                <div class="realtime-grid">
+                    <article class="current-subject" id="current-subject-card" aria-live="polite">
+                        <div class="state-label"><i aria-hidden="true"></i><span id="current-state">Checking schedule…</span></div>
+                        <strong id="current-code">—</strong>
+                        <h3 id="current-title">Loading current subject</h3>
+                        <div class="live-details">
+                            <span id="current-time">—</span>
+                            <span id="current-room">—</span>
+                        </div>
+                    </article>
+
+                    <article class="next-subject">
+                        <div class="state-label next"><i aria-hidden="true"></i><span>Up next</span><b id="next-day"></b></div>
+                        <span class="next-countdown" id="next-countdown">Calculating start time…</span>
+                        <strong id="next-code">—</strong>
+                        <h3 id="next-title">Loading next subject</h3>
+                        <div class="live-details">
+                            <span id="next-time">—</span>
+                            <span id="next-room">—</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="schedule-section" aria-labelledby="schedule-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Weekly agenda</p>
+                        <h2 id="schedule-heading">First Semester</h2>
+                    </div>
+                    <label class="search-control">
+                        <span class="sr-only">Search subjects or rooms</span>
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+                        <input id="schedule-search" type="search" placeholder="Search code, subject, or room" autocomplete="off">
+                        <kbd>Ctrl K</kbd>
+                    </label>
+                </div>
+
+                <nav class="day-nav" aria-label="Choose schedule day" id="day-nav"></nav>
+                <div class="schedule-grid" id="schedule-grid"></div>
+                <p class="empty-state" id="empty-state" hidden>No classes match your search.</p>
+            </section>
+
+            <section class="summary" aria-label="Schedule summary">
+                <article><strong>12</strong><span>Subjects</span></article>
+                <article><strong>23</strong><span>Total load</span></article>
+                <article><strong>23.0</strong><span>Maximum units</span></article>
+                <article><strong>5</strong><span>Class days</span></article>
+            </section>
+
+            <section class="legend" aria-labelledby="legend-heading">
+                <h2 id="legend-heading">Course key</h2>
+                <ul>
+                    <li><i class="key-dot core"></i>IT core lecture</li>
+                    <li><i class="key-dot lab"></i>Laboratory</li>
+                    <li><i class="key-dot general"></i>General education</li>
+                    <li><i class="key-dot pe"></i>Physical education</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <span><strong>2BSIT-2</strong> schedule</span>
+            <span>23 units · 12 subjects</span>
+        </footer>
+    </div>
+
+    <dialog id="subject-dialog" aria-labelledby="dialog-code">
+        <div class="dialog-header">
+            <div>
+                <p class="eyebrow">Subject details</p>
+                <h2 id="dialog-code"></h2>
+            </div>
+            <button class="icon-button" type="button" data-close-dialog aria-label="Close subject details">×</button>
+        </div>
+        <h3 id="dialog-title"></h3>
+        <dl class="detail-list">
+            <div><dt>Schedule</dt><dd id="dialog-schedule"></dd></div>
+            <div><dt>Room</dt><dd id="dialog-room"></dd></div>
+            <div><dt>Section</dt><dd>2BSIT-2</dd></div>
+            <div><dt>Course type</dt><dd id="dialog-type"></dd></div>
+            <div><dt>Units</dt><dd id="dialog-units"></dd></div>
+        </dl>
+        <form method="dialog"><button class="dialog-close" type="submit">Close details</button></form>
+    </dialog>
+
+    <script src="schedule-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
