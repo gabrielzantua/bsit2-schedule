@@ -1,5 +1,6 @@
 :root {
     color-scheme: dark;
+    --async: #FF0000;
     --page: #06101a;
     --panel: #0b1927;
     --panel-raised: #102235;
@@ -628,6 +629,11 @@ kbd {
 
 .subject-card.general {
     border-left-color: var(--amber);
+}
+
+.subject-card.async,
+.subject-card.async:hover {
+    border-left-color: var(--async);
 }
 
 .subject-card.pe {

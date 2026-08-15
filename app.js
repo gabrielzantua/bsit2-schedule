@@ -52,13 +52,13 @@ function createSubjectCard(subject) {
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `subject-card ${subject.category}`;
+    button.className = `subject-card ${subject.category}${subject.category === 'core' && subject.delivery ? ' async' : ''}`;
     button.dataset.code = subject.code;
     button.setAttribute('aria-label', `${subject.code}, ${subject.title}, ${subject.time}, room ${subject.room}`);
 
     const time = document.createElement('span');
     time.className = 'class-time';
-    time.textContent = subject.time;
+    time.textContent = subject.delivery || subject.time;
     const code = document.createElement('strong');
     code.textContent = subject.code;
     const title = document.createElement('span');

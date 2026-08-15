@@ -2,22 +2,22 @@ const assert = require('node:assert/strict');
 const { SCHEDULE, SCHEDULE_DAYS, getScheduleState } = require('./schedule-data');
 
 const expected = [
-    'CCC211-18|Information Management 1|T.B.A.|Tuesday|7:00 PM–9:00 PM|2|0|2',
-    'CIT213-18|Human Computer Interaction|T.B.A.|Wednesday|5:00 PM–7:00 PM|2|0|2',
-    'CITEL1-18|IT Elective 1|T.B.A.|Wednesday|7:00 PM–9:00 PM|2|0|2',
-    'GECETH-18|Ethics|T.B.A.|Thursday|7:00 AM–10:00 AM|3|0|3',
-    'PE3 ID-18|Individual/Dual Sports/Games|MPH5|Thursday|10:00 AM–12:00 PM|2|0|2',
-    'CCL211-18|Information Management 1 (Lab)|M101|Thursday|1:00 PM–4:00 PM|0|1|1',
-    'ITLEL-18|IT Elective 1 (Lab)|M101|Thursday|4:00 PM–7:00 PM|0|1|1',
-    'ITL213-18|Human Computer Interaction (Lab)|M110|Friday|1:00 PM–4:00 PM|0|1|1',
-    'CCL212-18|Data Structures and Algorithm (Lab)|M108|Friday|4:00 PM–7:00 PM|0|1|1',
-    'CCC212-18|Data Structures and Algorithm|T.B.A.|Friday|7:00 PM–9:00 PM|2|0|2',
-    'SOSLIT-18|Sosyedad at Literatura/Panitikang Panlipunan|T.B.A.|Saturday|7:00 AM–10:00 AM|3|0|3',
-    'GECPCO-18|Purposive Communication|T.B.A.|Saturday|10:00 AM–1:00 PM|3|0|3'
+    'CCC211-18|Information Management 1|M101|Tuesday|7:00 PM–9:00 PM|2|0|2|7:00 PM–9:00 PM | Asynchronous',
+    'CIT213-18|Human Computer Interaction|M110|Wednesday|5:00 PM–7:00 PM|2|0|2|5:00 PM–7:00 PM | Asynchronous',
+    'CITEL1-18|IT Elective 1|M101|Wednesday|7:00 PM–9:00 PM|2|0|2|7:00 PM–9:00 PM | Asynchronous',
+    'GECETH-18|Ethics|M312|Thursday|7:00 AM–10:00 AM|3|0|3|7:00 AM–8:30 AM Synchronous | 8:30 AM–10:00 AM Asynchronous',
+    'PE3 ID-18|Individual/Dual Sports/Games|MPH5|Thursday|10:00 AM–12:00 PM|2|0|2|',
+    'CCL211-18|Information Management 1 (Lab)|M101|Thursday|1:00 PM–4:00 PM|0|1|1|',
+    'ITLEL-18|IT Elective 1 (Lab)|M101|Thursday|4:00 PM–7:00 PM|0|1|1|',
+    'ITL213-18|Human Computer Interaction (Lab)|M110|Friday|1:00 PM–4:00 PM|0|1|1|',
+    'CCL212-18|Data Structures and Algorithm (Lab)|M108|Friday|4:00 PM–7:00 PM|0|1|1|',
+    'CCC212-18|Data Structures and Algorithm|M108|Friday|7:00 PM–9:00 PM|2|0|2|7:00 PM–9:00 PM | Asynchronous',
+    'SOSLIT-18|Sosyedad at Literatura/Panitikang Panlipunan|M402|Saturday|7:00 AM–10:00 AM|3|0|3|7:00 AM–8:30 AM Synchronous | 8:30 AM–10:00 AM Asynchronous',
+    'GECPCO-18|Purposive Communication|M402|Saturday|10:00 AM–1:00 PM|3|0|3|10:00 AM–11:30 AM Synchronous | 11:30 AM–1:00 PM Asynchronous'
 ];
 
-const actual = SCHEDULE.map(({ code, title, room, day, time, lectureUnits, labUnits, units }) =>
-    [code, title, room, day, time, lectureUnits, labUnits, units].join('|')
+const actual = SCHEDULE.map(({ code, title, room, day, time, lectureUnits, labUnits, units, delivery = '' }) =>
+    [code, title, room, day, time, lectureUnits, labUnits, units, delivery].join('|')
 );
 
 assert.deepEqual(actual, expected, 'schedule entries must match the official image');
